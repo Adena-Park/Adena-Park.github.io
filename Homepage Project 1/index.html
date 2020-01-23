@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Homepage</title>
+  </head>
+  <body>
+    <div id="container">
+      <a href="index.html">
+        <div class="space1">
+          <div id="logo">
+            <script type="text/javascript">
+              var imgAr = ["logo1.png", "logo2.png", "logo3.png",
+              "logo4.png", "logo5.png", "logo6.png", "logo7.png", "logo8.png",
+              "logo9.png", "logo10.png"];
+              getRandomImage(imgAr);
+              function getRandomImage(imgAr) {
+                  path = 'img/'; // default path here
+                  var num = Math.floor( Math.random() * 9 );
+                  var img = imgAr[ num ];
+                  var imgStr = '<img src="' + path + img + '" alt = "Fail">';
+                  document.write(imgStr); document.close();
+              }
+            </script>
+          </div>
+          <div id="title">
+            <p>Homepage #</p> <span id="pageSpan"></span>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.google.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">Google</p>
+        </div>
+      </a>
+      <a href="https://www.yahoo.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">Yahoo!</p>
+        </div>
+      </a>
+      <a href="https://www.bing.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">Bing</p>
+        </div>
+      </a>
+      <a href="https://www.baidu.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">Baidu</p>
+        </div>
+      </a>
+      <a href="https://www.aol.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">AOL</p>
+        </div>
+      </a>
+      <a href="https://www.ask.com/" target="_blank">
+        <div class="entry">
+          <p class="pentry">Ask</p>
+        </div>
+      </a>
+
+
+      <a href="index.html">
+        <div class="space2">
+          <div id="logo">
+            <script type="text/javascript">
+              var imgAr = ["logo1.png", "logo2.png", "logo3.png",
+              "logo4.png", "logo5.png", "logo6.png", "logo7.png", "logo8.png",
+              "logo9.png", "logo10.png"];
+              getRandomImage(imgAr);
+              function getRandomImage(imgAr) {
+                path = 'img/'; // default path here
+                var num = Math.floor( Math.random() * 9 );
+                var img = imgAr[ num ];
+                var imgStr = '<img src="' + path + img + '" alt = "Fail">';
+                document.write(imgStr); document.close();
+              }
+            </script>
+          </div>
+          <div id="title">
+            <p>Homepage #</p> <span id="pageSpan1"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    numbergenerator();
+
+    function numbergenerator() {
+      var pageNode = Math.floor(Math.random() * 100000 + 10000);
+
+      var span = document.createTextNode(pageNode);
+      document.getElementById('pageSpan').appendChild(span);
+    }
+
+    numbergenerator1();
+
+    function numbergenerator1() {
+      var pageNode = Math.floor(Math.random() * 100000 + 10000);
+
+      var span = document.createTextNode(pageNode);
+      document.getElementById('pageSpan1').appendChild(span);
+    }
+  </script>
+</html>

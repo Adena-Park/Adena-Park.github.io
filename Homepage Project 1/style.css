@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+
+#container {
+  width: 100vw;
+  min-height: 100vh;
+  background: SlateGrey;
+  margin: auto;
+  position: fixed;
+}
+
+p {
+    margin: auto;
+    margin-top: 1.5vh;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  width: 90%;
+  height: 125px;
+  background: White;
+  margin: auto;
+  position: relative;
+}
+
+.space1 {
+  width: 40%;
+  height: 125px;
+  background: White;
+  margin: auto;
+  position: relative;
+  margin-top: 5vh;
+}
+
+.space2 {
+  width: 40%;
+  height: 125px;
+  background: White;
+  margin: auto;
+  position: relative;
+  margin-top: 50vh;
+}
+
+#logo {
+  width: 75px;
+  height: 75px;
+  left: 20px;
+  top: 13px;
+  position: absolute;
+}
+
+#title {
+  width: 250px;
+  height: 75px;
+  left: 100px;
+  top: 13px;
+  position: absolute;
+  font-size: 40px;
+  border: 0px;
+}
+
+.links {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 3vw;
+  margin-top: 5%;
+  float: left;
+}
+
+.links:hover {
+  color: orange;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.entry {
+  background-color: white;
+  width: 20vw;
+  height: 8vh;
+  margin-top: 10vh;
+  margin-left: 10vw;
+  float: left;
+}
+
+.pentry {
+  margin: 0px;
+  padding-top: 2.5vh;
+  font-size: 20px;
+}
+
+.entry:hover {
+  background-color: lightgrey;
+}
