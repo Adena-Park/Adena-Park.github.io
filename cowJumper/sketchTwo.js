@@ -1,4 +1,11 @@
+var sizeX = 50;
+var sizeY = 50;
+var coorX = 100;
+var coorY = 100;
+var i = 0;
+
 function setup() {
+  frameRate(10);
   createCanvas(400, 400);
   background(210);
   angleMode(DEGREES);
@@ -34,11 +41,19 @@ function draw() {
 
   quad(6, 6, 10, 11, 11, 15, 6, 10);
   quad(-6, -6, -10, -11, -11, -11, -6, -10);
-
-  fill(0);
-  noStroke();
-  ellipse(0, 0, 15, 15);
   
+  // for (let i = -200; i < 200; i++) {
+  //   fill(0);
+  //   line(-200,i+1,200, i+1);
+  //   nostroke();
+  //   fill(210);
+  //   quad(-200, i, 200, i, 200,-200, -200, -200);
+  // }
+  stroke(r, g, b);
+
+
+  ellipse(0, 0, 15, 15);
+
 
 }
 

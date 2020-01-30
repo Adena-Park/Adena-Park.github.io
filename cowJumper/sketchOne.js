@@ -1,5 +1,10 @@
 //GLOBAL VARIABLES
-var characterColor = 0;
+var backgroundColor = 220;
+var lineColor = 255;
+var centerColor = 0;
+var cCR = 0;
+var cCG = 0;
+var cCB = 0;
 var legY = -10;
 var headY = -40;
 var snoutY = -35;
@@ -8,12 +13,13 @@ var bodyY = -30;
 var tailBaseY = -37.5;
 var tailY = -27.5;
 var jumpHeight = -5;
-var funds = 10;
+var funds = 0;
 var cost = 5;
+var increment = 1;
 
 function character() {
-  stroke(characterColor);
-  fill(characterColor);
+  stroke(cCR, cCG, cCB);
+  fill(cCR, cCB, cCB);
 
   rect(25, headY, 20, 20); //Head
   rect(35, snoutY, 10, 10); //Snout
@@ -34,7 +40,6 @@ function setup() {
   createCanvas(400, 400);
   rectMode(CENTER);
   textAlign(CENTER);
-  frameRate(5);
   jumpAnimation();
 }
 
@@ -42,55 +47,91 @@ function draw() {
   translate(200, 200) //puts (0,0) in the center of canvas
   //Negative, Up and Left, Positive, Down and Right
 
-  background(220);
-  for (i = 200; i > -200; i = i - 10) {
-    stroke(255);
+  background(backgroundColor);
+
+  if (backgroundColor === 220) {
+    noStroke();
+    fill(173, 216, 230)
+    rect(0, 0, 400,400);
+
+  } else {
+    noStroke();
+    fill(50, 82, 123)
+    rect(0, 0, 400,400);
+
+  }
+
+
+
+  for (let i = 200; i > -200; i = i - 10) {
+    stroke(lineColor);
     line(i, -200, i, 200);
     line(-200, i, 200, i);
-    stroke(0);
+    stroke(centerColor);
     line(0, -200, 0, 200);
     line(-200, 0, 200, 0);
   }
 
+  if (backgroundColor === 220) {
+    noStroke();
+    fill(255, 255, 0)
+    rect(-140, -110, 30,30);
+    fill(11, 102, 35);
+    rect(0,100,400,200);
+    fill(255);
+  } else {
+    noStroke();
+    fill(190, 194, 203)
+    rect(140, -110, 30,30);
+    fill(58, 95, 11);
+    rect(0,100,400,200);
+    fill(255);
+  }
+
   //UI
-  rect(0, 100, 100, 50); //Jump
+  rect(0, 50, 100, 50); //Jump
   fill(0);
   textSize(15);
-  text('UPGRADE', 0, 105);
-  
+  text('UPGRADE', 0, 55);
+
   textSize(12);
-  
+
   fill(255);
-  rect(125, 100, 100, 50); //Cost
+  rect(125, 50, 100, 50); //Cost
   fill(0);
-  text('COST', 125, 95);
-  text(cost, 125, 115);
-  
+  text('COST', 125, 45);
+  text(cost, 125, 65);
+
   fill(255);
-  rect(-125, 100, 100, 50); //Funds
+  rect(-125, 50, 100, 50); //Funds
   fill(0);
-  text('FUNDS', -125, 95);
-  text(funds, -125, 115);
-  
+  text('FUNDS', -125, 45);
+  text(funds, -125, 65);
+
   fill(0);
   noStroke();
   rect(0, -175, 400, 50);
+  rect(0, 175, 400, 50);
   rect(-200, 0, 10, 400);
   rect(200, 0, 10, 400);
   rect(0, 200, 400, 10);
   stroke(0);
-  
+
   textSize(20);
   fill(255);
   text('Press Space to Jump and Earn Money!', 0, -170);
-  
+  text('Enter = Background Change', 0, 170);
+  text('Shift = Character Color Change', 0, 190);
+
+
+
 
 
   character();
 }
 
 function jumpAnimation() {
-  for (j = 0; j > jumpHeight; j--) {
+  for (let j = 0; j > jumpHeight; j--) {
     legY = legY - 1;
     headY = headY - 1;
     snoutY = snoutY - 1;
@@ -103,7 +144,7 @@ function jumpAnimation() {
   var tick = 1;
 
   if (tick === 1) {
-    for (j = 0; j > jumpHeight; j--) {
+    for (let j = 0; j > jumpHeight; j--) {
       legY = legY + 1;
       headY = headY + 1;
       snoutY = snoutY + 1;
@@ -115,6 +156,7 @@ function jumpAnimation() {
   }
 
   tick = 0;
+  frameRate(30);
 }
 
 function mouseClicked() {
@@ -123,6 +165,7 @@ function mouseClicked() {
       jumpHeight = jumpHeight + 1;
       funds = funds - cost;
       cost = cost + 5;
+      increment = increment + 1;
     }
   }
 }
@@ -130,6 +173,22 @@ function mouseClicked() {
 function keyTyped() {
   if (keyCode == 32) {
     jumpAnimation();
-    funds = funds + 1
+    funds = funds + increment;
+  }
+  if (keyCode == 13) {
+    if (backgroundColor == 220) {
+      backgroundColor = 100;
+      lineColor = 0;
+      centerColor = 255;
+    } else if (backgroundColor == 100) {
+      backgroundColor = 220;
+      lineColor = 255;
+      centerColor = 0;
+    }
+  }
+  if (keyCode == 16) {
+    cCR = random(0, 255);
+    cCG = random(0, 255);
+    cCB = random(0, 255);
   }
 }
