@@ -57,19 +57,13 @@ iframe {
 
 /******/
 
-#container {
-  width: 100vw;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #00ffff 0%, #ff9900 100%);
-  margin: auto;ed
-}
-
 header {
   width: 90%;
   height: 100px;
   background: Turquoise;
   margin: auto;
   position: relative;
+  margin-bottom: 1vw;
 }
 
 #logo {
