@@ -12,10 +12,16 @@ var earY = -50;
 var bodyY = -30;
 var tailBaseY = -37.5;
 var tailY = -27.5;
-var jumpHeight = -5;
+var jumpHeight = 10;
+var jumpTop = 80;
 var funds = 0;
 var cost = 5;
 var increment = 1;
+var jump = false;
+var fall = false;
+var eyeY = -42.5;
+var isJumping = false;
+
 
 function character() {
   stroke(cCR, cCG, cCB);
@@ -33,7 +39,7 @@ function character() {
   rect(-25, tailBaseY, 5, 5); //TailBase
   rect(-27.5, tailY, 5, 25); //Tail
   fill(255); //White
-  rect(25, -42.5, 5, 5); //Eye
+  rect(25, eyeY, 5, 5); //Eye
 }
 
 function setup() {
@@ -123,7 +129,39 @@ function draw() {
   text('Enter = Background Change', 0, 170);
   text('Shift = Character Color Change', 0, 190);
 
+  if(jump){
+      legY = legY - 1;
+      console.log(legY);
+      headY = headY - 1;
+      snoutY = snoutY - 1;
+      earY = earY - 1;
+      bodyY = bodyY - 1;
+      tailBaseY = tailBaseY - 1;
+      tailY = tailY - 1;
+      eyeY = eyeY - 1;
+      jumpHeight ++;
+      if(jumpHeight > jumpTop){
+        fall=true;
+        jump=false;
+      }
+  }
 
+
+  if(fall){
+        legY = legY + 1;
+        headY = headY + 1;
+        snoutY = snoutY + 1;
+        earY = earY + 1;
+        bodyY = bodyY + 1;
+        tailBaseY = tailBaseY + 1;
+        tailY = tailY + 1;
+        eyeY = eyeY + 1;
+        jumpHeight--;
+        if(jumpHeight <= 0){
+          fall = false;
+          isJumping = false;
+        }
+  }
 
 
 
@@ -131,38 +169,56 @@ function draw() {
 }
 
 function jumpAnimation() {
-  for (let j = 0; j > jumpHeight; j--) {
-    legY = legY - 1;
-    headY = headY - 1;
-    snoutY = snoutY - 1;
-    earY = earY - 1;
-    bodyY = bodyY - 1;
-    tailBaseY = tailBaseY - 1;
-    tailY = tailY - 1;
+
+  if(!isJumping){
+    isJumping = true;
+    jump = true;
+    jumpHeight = 0;
+    funds = funds + increment;
+    // setInterval(function () {
+    //   jump = false;
+    //   fall=true;
+    //   setInterval(function () {
+    //     fall = false;
+    //     isJumping = false;
+    //   }, 1000);
+    // }, 1000);
   }
 
-  var tick = 1;
 
-  if (tick === 1) {
-    for (let j = 0; j > jumpHeight; j--) {
-      legY = legY + 1;
-      headY = headY + 1;
-      snoutY = snoutY + 1;
-      earY = earY + 1;
-      bodyY = bodyY + 1;
-      tailBaseY = tailBaseY + 1;
-      tailY = tailY + 1;
-    }
-  }
+  // console.log("JUMP!");
+  // for (let j = 0; j < jumpHeight; j++) {
+  //   legY = legY - 100;
+  //   headY = headY - 100;
+  //   snoutY = snoutY - 100;
+  //   earY = earY - 100;
+  //   bodyY = bodyY - 100;
+  //   tailBaseY = tailBaseY - 100;
+  //   tailY = tailY - 100;
+  //   console.log("jumping  = " + j);
+  // }
+  //
+  //
+  //
+  //
+  //   for (let j = 0; j < jumpHeight; j++) {
+  //     legY = legY + 100;
+  //     headY = headY + 100;
+  //     snoutY = snoutY + 100;
+  //     earY = earY + 100;
+  //     bodyY = bodyY + 100;
+  //     tailBaseY = tailBaseY + 100;
+  //     tailY = tailY + 100;
+  //   }
 
-  tick = 0;
-  frameRate(30);
+
+  // frameRate(30);
 }
 
 function mouseClicked() {
   if (mouseX > -50 && mouseX < 50 && mouseY > 75 && mouseY < 125) {
     if (funds - costs >= 0) {
-      jumpHeight = jumpHeight + 1;
+      jumpTop = jumpTop + 1;
       funds = funds - cost;
       cost = cost + 5;
       increment = increment + 1;
@@ -173,7 +229,7 @@ function mouseClicked() {
 function keyTyped() {
   if (keyCode == 32) {
     jumpAnimation();
-    funds = funds + increment;
+
   }
   if (keyCode == 13) {
     if (backgroundColor == 220) {
